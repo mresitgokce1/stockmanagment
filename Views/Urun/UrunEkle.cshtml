@@ -1,0 +1,36 @@
+﻿@model StokYonetimi.Islemler.CokluModelGonder
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+<div class="text-center">
+    <h1 class="display-4">ÜRÜN YÖNETİMİ</h1>
+</div>
+
+<div class="text-center">
+    <h1>ÜRÜN EKLE</h1>
+    <hr />
+</div>
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Ürün Adı</label>
+            @Html.TextBox("UrunAdi", null, new { @class = "form-control", @placeholder = "Ürün Adı" })
+        </div>
+        <div class="form-group">
+            <label>Ürün Stoğu</label>
+            @Html.TextBox("UrunStogu", null, new { @class = "form-control", @placeholder = "Ürün Stoğu" })
+        </div>
+        <div class="form-group form-check">
+            @Html.CheckBox("UrunDurumu", true, new { @class = "form-check-input" })
+            <label class="form-check-label">Satışa Açık</label>
+        </div>
+        <div class="form-group">
+            <label>Kategori Seç</label>
+            @Html.DropDownList("KategoriId", new SelectList(Model.kategoriler, "Id", "KategoriAdi"), new {@class="form-control"})
+        </div>
+        <div class="form-group">
+            <label>Ürün Görseli Ekle</label>
+            @Html.TextBox("GorselSec",null,new {type="file"})
+        </div>
+        <button type="submit" class="btn btn-primary">Ürün Ekle</button>
+    </form>
+</div>

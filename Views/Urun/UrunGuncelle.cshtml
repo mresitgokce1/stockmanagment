@@ -1,0 +1,41 @@
+﻿@model StokYonetimi.Islemler.CokluModelGonder
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+<div class="text-center">
+    <h1 class="display-4">ÜRÜN YÖNETİMİ</h1>
+</div>
+
+<div class="text-center">
+    <h1>ÜRÜN GÜNCELLE</h1>
+    <hr />
+</div>
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Ürün Id</label>
+            @Html.TextBox("UrunId", Model.urun.Id, new {@class="form-control", @readonly="readonly"})
+        </div>
+        
+        <div class="form-group">
+            <label>Ürün Adı</label>
+            @Html.TextBox("UrunAdi", Model.urun.UrunAdi, new { @class = "form-control", @placeholder = "Ürün Adı" })
+        </div>
+        <div class="form-group">
+            <label>Ürün Stoğu</label>
+            @Html.TextBox("UrunStogu", Model.urun.Stok, new { @class = "form-control", @placeholder = "Ürün Stoğu" })
+        </div>
+        <div class="form-group form-check">
+            @Html.CheckBox("UrunDurumu", Model.urun.Durum, new { @class = "form-check-input" })
+            <label class="form-check-label">Satışa Açık</label>
+        </div>
+        <div class="form-group">
+            <label>Kategori Seç</label>
+            @Html.DropDownList("KategoriId", new SelectList(Model.kategoriler, "Id", "KategoriAdi", @Model.urun.Kategori.Id), new {@class="form-control"})
+        </div>
+        <div class="form-group">
+            <label>Ürün Görseli Ekle</label>
+            @Html.TextBox("GorselSec",null,new {type="file"})
+        </div>
+        <button type="submit" class="btn btn-primary">Ürün Güncelle</button>
+    </form>
+</div>

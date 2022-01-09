@@ -1,0 +1,32 @@
+﻿@model StokYonetimi.Islemler.CokluModelGonder
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+<div class="text-center">
+    <h1 class="display-4">KATEGORİ YÖNETİMİ</h1>
+</div>
+
+<div class="text-center">
+    <h1>KATEGORİ GÜNCELLE</h1>
+    <hr />
+</div>
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Kategori Id</label>
+            @Html.TextBox("KategoriId", @Model.kategori.Id, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="form-group">
+            <label>Kategori Adı</label>
+            @Html.TextBox("KategoriAdi", @Model.kategori.KategoriAdi, new { @class = "form-control", @placeholder = "Kategori Adı" })
+        </div>
+        <div class="form-group form-check">
+            @Html.CheckBox("KategoriDurumu", @Model.kategori.Durum, new { @class = "form-check-input" })
+            <label class="form-check-label">Aktif</label>
+        </div>
+        <div class="form-group">
+            <label>Kategori Görseli Ekle</label>
+            @Html.TextBox("GorselSec", null, new { type = "file" })
+        </div>
+        <button type="submit" class="btn btn-primary">Kategori Güncelle</button>
+    </form>
+</div>
